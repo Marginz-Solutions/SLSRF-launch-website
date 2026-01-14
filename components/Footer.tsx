@@ -1,7 +1,63 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const Footer: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: data.message || 'Thank you for contacting us!'
+        });
+        setFormData({ name: '', phone: '', email: '' });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: data.message || 'Something went wrong. Please try again.'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <footer id="contact" className="bg-black pt-24 overflow-hidden">
       {/* Massive Contact Heading */}
@@ -45,27 +101,67 @@ const Footer: React.FC = () => {
           {/* Contact Form */}
           <div className="reveal">
             <h4 className="text-[#f2921d] text-2xl font-black uppercase tracking-[0.2em] mb-12">Send us a message</h4>
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex flex-col gap-3">
                 <label className="text-white text-[10px] font-bold uppercase tracking-widest opacity-60">Full Name *</label>
                 <div className="relative">
-                  <input type="text" placeholder="Enter your name" className="w-full bg-transparent border border-white/20 p-5 text-white focus:border-[#f2921d] outline-none transition-all pr-12 rounded-sm" />
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Enter your name" 
+                    required
+                    className="w-full bg-transparent border border-white/20 p-5 text-white focus:border-[#f2921d] outline-none transition-all pr-12 rounded-sm" 
+                  />
                   <i className="far fa-user absolute right-5 top-1/2 -translate-y-1/2 text-gray-600"></i>
                 </div>
               </div>
               <div className="flex flex-col gap-3">
                 <label className="text-white text-[10px] font-bold uppercase tracking-widest opacity-60">Phone Number *</label>
                 <div className="relative">
-                  <input type="tel" placeholder="Enter your phone" className="w-full bg-transparent border border-white/20 p-5 text-white focus:border-[#f2921d] outline-none transition-all pr-12 rounded-sm" />
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Enter your phone" 
+                    required
+                    className="w-full bg-transparent border border-white/20 p-5 text-white focus:border-[#f2921d] outline-none transition-all pr-12 rounded-sm" 
+                  />
                   <i className="fas fa-phone-alt absolute right-5 top-1/2 -translate-y-1/2 text-gray-600"></i>
                 </div>
               </div>
               <div className="flex flex-col gap-3 md:col-span-2">
                 <label className="text-white text-[10px] font-bold uppercase tracking-widest opacity-60">Email Address *</label>
-                <input type="email" placeholder="Enter your email" className="w-full bg-transparent border border-white/20 p-5 text-white focus:border-[#f2921d] outline-none transition-all rounded-sm" />
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter your email" 
+                  required
+                  className="w-full bg-transparent border border-white/20 p-5 text-white focus:border-[#f2921d] outline-none transition-all rounded-sm" 
+                />
               </div>
-              <button type="button" className="bg-gbc-gradient text-black px-12 py-5 font-black uppercase tracking-widest md:w-fit mt-4 rounded-sm hover:scale-105 transition-transform">
-                SEND MESSAGE
+              
+              {/* Status Message */}
+              {submitStatus.type && (
+                <div className={`md:col-span-2 p-4 rounded-sm ${
+                  submitStatus.type === 'success' 
+                    ? 'bg-green-500/10 border border-green-500/20 text-green-400' 
+                    : 'bg-red-500/10 border border-red-500/20 text-red-400'
+                }`}>
+                  {submitStatus.message}
+                </div>
+              )}
+
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="bg-gbc-gradient text-black px-12 py-5 font-black uppercase tracking-widest md:w-fit mt-4 rounded-sm hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
               </button>
             </form>
           </div>

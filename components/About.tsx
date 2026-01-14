@@ -15,13 +15,18 @@ const About: React.FC = () => {
           </p>
         </div>
         <div className="bg-[#050505] p-12 md:p-16 flex flex-col justify-center border-l border-white/5 relative overflow-hidden reveal-right">
-          <a href="#" className="flex items-center justify-between group">
-            <span className="text-white text-3xl font-bold uppercase leading-[1.1] tracking-widest group-hover:text-[#f2921d] transition-colors">PARTNER <br /> WITH US</span>
-            <i className="fas fa-arrow-right text-white text-2xl transition-transform group-hover:translate-x-3 group-hover:text-[#f2921d]"></i>
-          </a>
-          <div className="mt-12 pt-8 border-t border-white/10">
-            <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.3em]">3rd Edition - Chennai</p>
-            <p className="text-white font-bold text-3xl mt-1 tracking-widest">2026</p>
+          <div className="mb-8">
+            <p className="text-[#f2921d] text-sm font-black uppercase tracking-[0.2em] mb-4">ANCHOR INITIATIVE →</p>
+            <h3 className="text-white text-2xl md:text-3xl font-black uppercase leading-tight tracking-tight mb-2">
+              Digital Knowledge Bank on
+            </h3>
+            <p className="text-white text-xl md:text-2xl font-bold leading-tight">
+              Indian Medicinal Flora<br />& Aromatic Plants
+            </p>
+          </div>
+          <div className="mt-auto pt-8 border-t border-white/10">
+            <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.3em]">National Launch — Chennai</p>
+            <p className="text-white font-black text-3xl mt-1 tracking-widest">25 January 2026</p>
           </div>
         </div>
       </div>

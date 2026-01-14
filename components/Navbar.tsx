@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
           </div>
           <div className="flex flex-col">
             <span className="text-white font-black text-lg tracking-tighter leading-none">SLSRF</span>
-            <span className="text-gray-400 text-[10px] font-bold tracking-[0.2em] uppercase leading-none mt-1">Conclave - 2026</span>
+            <span className="text-gray-400 text-[10px] font-bold tracking-[0.2em] uppercase leading-none mt-1">Launch - 2026</span>
           </div>
         </div>
 

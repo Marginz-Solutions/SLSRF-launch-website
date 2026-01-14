@@ -23,9 +23,6 @@ const MarqueeSection: React.FC = () => {
   return (
     <section id="marquee" className="py-24 bg-black overflow-hidden">
       <div className="text-center mb-16 reveal">
-        <h2 className="text-[#f2921d] text-4xl md:text-7xl font-black uppercase tracking-tighter">
-          DECODE. DISRUPT. DEFINE.
-        </h2>
         <p className="text-white text-lg md:text-2xl font-bold uppercase tracking-[0.3em] mt-6 opacity-70">
           Conscious Science • National Knowledge • Sustainable Futures
         </p>
