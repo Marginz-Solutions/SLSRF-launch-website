@@ -13,9 +13,7 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'ABOUT', href: '#about' },
     { name: 'AGENDA', href: '#marquee' },
-    { name: 'SPEAKERS', href: '#speakers' },
-    { name: 'PARTNER WITH US', href: '#partners' },
-    { name: 'CONTACT', href: '#contact' },
+    { name: 'RSVP', href: '#contact' },
   ];
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
