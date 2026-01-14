@@ -5,7 +5,7 @@ const Partners: React.FC = () => {
   const mainPartners = [
     { name: 'BRiX Network', type: 'Strategic Partner', logo: '/BRIX NEW.png', hasLogo: true },
     { name: 'Q DoTZ', type: 'Innovation Partner', logo: '/Quantum-dotz-logo.png', hasLogo: true },
-    { name: 'SNA', type: 'Associate Partner', logo: null, hasLogo: false },
+    { name: 'SNA', type: 'Associate Partner', logo: '/Brand-Logo.jpg', hasLogo: true },
     { name: 'Marginz', type: 'Growth Partner', logo: '/marginz logo.jpg', hasLogo: true }
   ];
 
@@ -26,12 +26,12 @@ const Partners: React.FC = () => {
               className="bg-white p-10 flex flex-col items-center justify-center hover:shadow-2xl hover:scale-[1.05] transition-all group rounded-sm reveal-zoom"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-                <div className="h-20 w-full flex items-center justify-center mb-8 grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div className={`w-full flex items-center justify-center mb-8 grayscale group-hover:grayscale-0 transition-all duration-700 ${partner.name === 'SNA' ? 'h-32' : 'h-20'}`}>
                     {partner.hasLogo ? (
                       <img 
                         src={partner.logo!} 
                         alt={partner.name} 
-                        className="max-h-full max-w-full object-contain"
+                        className={`max-w-full object-contain ${partner.name === 'SNA' ? 'max-h-32' : 'max-h-full'}`}
                       />
                     ) : (
                       <span className="text-black font-black text-2xl md:text-3xl tracking-tighter uppercase text-center leading-none">{partner.name}</span>
