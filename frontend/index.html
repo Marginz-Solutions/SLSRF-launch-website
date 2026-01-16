@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLSRF 2026 | The Divine Launch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --gbc-orange: #f2921d;
+            --gbc-dark: #000000;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--gbc-dark);
+            color: #fff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Improve rendering performance */
+        img {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        .text-gbc-orange { color: var(--gbc-orange); }
+        .bg-gbc-orange { background-color: var(--gbc-orange); }
+        .border-gbc-orange { border-color: var(--gbc-orange); }
+
+        .bg-gbc-gradient {
+            background: linear-gradient(135deg, #f2921d 0%, #d47a0f 100%);
+        }
+
+        /* Sophisticated Scroll Animations */
+        .reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-skew, .reveal-fade {
+            opacity: 0;
+            transform: translateZ(0); /* Force GPU acceleration */
+            backface-visibility: hidden;
+            perspective: 1000px;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal { transform: translate3d(0, 40px, 0); }
+        .reveal.active { 
+            opacity: 1; 
+            transform: translate3d(0, 0, 0);
+        }
+
+        .reveal-left { transform: translate3d(-60px, 0, 0); }
+        .reveal-left.active { 
+            opacity: 1; 
+            transform: translate3d(0, 0, 0);
+        }
+
+        .reveal-right { transform: translate3d(60px, 0, 0); }
+        .reveal-right.active { 
+            opacity: 1; 
+            transform: translate3d(0, 0, 0);
+        }
+
+        .reveal-zoom { transform: translate3d(0, 0, 0) scale(0.95); }
+        .reveal-zoom.active { 
+            opacity: 1; 
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        .reveal-skew { transform: translate3d(0, 30px, 0) skewY(3deg); }
+        .reveal-skew.active { 
+            opacity: 1; 
+            transform: translate3d(0, 0, 0) skewY(0);
+        }
+
+        .reveal-fade { transform: translate3d(0, 0, 0); }
+        .reveal-fade.active { 
+            opacity: 1;
+        }
+
+        /* Delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-500 { transition-delay: 500ms; }
+        .delay-700 { transition-delay: 700ms; }
+        .delay-1000 { transition-delay: 1000ms; }
+
+        /* Custom underline for titles */
+        .title-underline {
+            position: relative;
+        }
+        .title-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 0;
+            height: 4px;
+            background: var(--gbc-orange);
+            transition: width 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.4s;
+        }
+        .active .title-underline::after {
+            width: 150px;
+        }
+
+        /* Hero Specific Animations */
+        @keyframes kenburns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+        .animate-kenburns {
+            animation: kenburns 30s ease-out infinite alternate;
+        }
+
+        @keyframes tracking-in {
+            0% { letter-spacing: -0.5em; opacity: 0; }
+            40% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        .animate-tracking-in {
+            animation: tracking-in 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+        }
+
+        @keyframes slide-in-bottom {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slide-in-bottom 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+
+        /* Image Parallax Hover */
+        .img-hover-scale {
+            transition: transform 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .img-hover-scale:hover {
+            transform: scale(1.1);
+        }
+
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .carousel-container::-webkit-scrollbar { display: none; }
+        .carousel-item { scroll-snap-align: center; flex: 0 0 auto; }
+
+        /* Consistent Laptop Sizing - Lock proportions for 1024px to 1920px */
+        @media (min-width: 1024px) and (max-width: 1920px) {
+            .hero-the {
+                font-size: clamp(5rem, 6vw, 8rem) !important;
+            }
+            .hero-divine {
+                font-size: clamp(8rem, 10vw, 13rem) !important;
+            }
+            .hero-launch {
+                font-size: clamp(5rem, 6vw, 8rem) !important;
+            }
+            .hero-date {
+                font-size: clamp(0.75rem, 0.9vw, 0.875rem) !important;
+            }
+            .hero-location {
+                font-size: clamp(0.7rem, 0.8vw, 0.75rem) !important;
+            }
+            .hero-tagline {
+                font-size: clamp(1.25rem, 1.8vw, 1.875rem) !important;
+            }
+        }
+
+        /* Ultra-wide screens (1920px+) - Cap maximum sizes */
+        @media (min-width: 1920px) {
+            .hero-the {
+                font-size: 8rem !important;
+            }
+            .hero-divine {
+                font-size: 13rem !important;
+            }
+            .hero-launch {
+                font-size: 8rem !important;
+            }
+            .hero-date {
+                font-size: 0.875rem !important;
+            }
+            .hero-location {
+                font-size: 0.75rem !important;
+            }
+            .hero-tagline {
+                font-size: 1.875rem !important;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
