@@ -40,38 +40,72 @@
 }
 ```
 
-## Email Integration (TODO)
+## Email Integration Setup
 
-To integrate with an email service, add one of the following:
+The backend uses **Resend** for email delivery.
 
-### Option 1: SendGrid
-```bash
-npm install @sendgrid/mail
-```
+### Step 1: Get Resend API Key
 
-### Option 2: Resend
-```bash
-npm install resend
-```
+1. Go to [https://resend.com](https://resend.com)
+2. Sign up for a free account
+3. Navigate to API Keys section
+4. Create a new API key
+5. Copy the API key (starts with `re_`)
 
-### Option 3: Nodemailer
-```bash
-npm install nodemailer
-```
+### Step 2: Configure Vercel Environment Variables
 
-Then update the `api/contact.ts` file to send emails using your preferred service.
+Add these environment variables in your Vercel project settings:
 
-## Environment Variables
-
-Add these to your Vercel project settings:
+1. Go to your Vercel project dashboard
+2. Navigate to **Settings** → **Environment Variables**
+3. Add the following variables:
 
 ```
-SENDGRID_API_KEY=your_api_key_here
-# or
-RESEND_API_KEY=your_api_key_here
-# or
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your_email@gmail.com
-SMTP_PASS=your_password
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+CONTACT_EMAIL=contact@slsrf.org
 ```
+
+### Step 3: Verify Domain (Optional but Recommended)
+
+For production use, verify your domain in Resend:
+
+1. Go to Resend dashboard → Domains
+2. Add your domain (e.g., slsrf.org)
+3. Add the DNS records provided by Resend
+4. Update the `from` field in `api/contact.ts`:
+   ```typescript
+   from: 'SLSRF <noreply@slsrf.org>'
+   ```
+
+### Features
+
+✅ **Dual Email Sending**:
+- Notification email to SLSRF team with submission details
+- Confirmation email to user with event information
+
+✅ **Email Content**:
+- Professional HTML templates
+- SLSRF branding with orange (#f2921d) theme
+- Event details included in confirmation
+- Timestamp in IST timezone
+
+✅ **Error Handling**:
+- Graceful fallback if email service fails
+- All submissions logged to console
+- User still receives success message
+
+### Testing Locally
+
+1. Copy `.env.example` to `.env.local`
+2. Add your Resend API key
+3. Run `npm run dev`
+4. Test the contact form at `http://localhost:3000`
+
+### Free Tier Limits
+
+Resend free tier includes:
+- 100 emails per day
+- 3,000 emails per month
+- Perfect for launch event registrations
+
+For higher volume, upgrade to a paid plan.

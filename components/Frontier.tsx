@@ -19,7 +19,7 @@ const Frontier: React.FC = () => {
           </p>
           <div className="relative inline-block">
             <h2 className="text-white text-5xl md:text-8xl lg:text-[7.5rem] font-black uppercase tracking-tighter leading-tight">
-              THE CONSCIOUS FRONTIER
+              THE <span className="text-[#f2921d]">CONSCIOUS</span> FRONTIER
             </h2>
             <div className="h-1.5 md:h-2 bg-[#f2921d] w-1/4 mt-4 md:mt-6"></div>
           </div>

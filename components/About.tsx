@@ -17,16 +17,16 @@ const About: React.FC = () => {
         <div className="bg-[#050505] p-12 md:p-16 flex flex-col justify-center border-l border-white/5 relative overflow-hidden reveal-right">
           <div className="mb-8">
             <p className="text-[#f2921d] text-sm font-black uppercase tracking-[0.2em] mb-4">ANCHOR INITIATIVE →</p>
+            <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-2">National Launch — Chennai</p>
+            <p className="text-white font-black text-3xl tracking-widest mb-8">25 January 2026</p>
+          </div>
+          <div className="mt-auto pt-8 border-t border-white/10">
             <h3 className="text-white text-2xl md:text-3xl font-black uppercase leading-tight tracking-tight mb-2">
               Digital Knowledge Bank on
             </h3>
             <p className="text-white text-xl md:text-2xl font-bold leading-tight">
               Indian Medicinal Flora<br />& Aromatic Plants
             </p>
-          </div>
-          <div className="mt-auto pt-8 border-t border-white/10">
-            <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.3em]">National Launch — Chennai</p>
-            <p className="text-white font-black text-3xl mt-1 tracking-widest">25 January 2026</p>
           </div>
         </div>
       </div>
