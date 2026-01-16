@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-[100] transition-all duration-500 ${scrolled ? 'bg-black/90 backdrop-blur-md py-4 border-b border-white/10 shadow-2xl' : 'bg-transparent py-8'}`}>
+    <nav className={`fixed w-full z-[100] transition-all duration-500 ${scrolled ? 'bg-black/40 backdrop-blur-sm py-4 border-b border-white/10' : 'bg-transparent py-8'}`}>
       <div className="max-w-[1600px] mx-auto px-10 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#top" className="flex items-center gap-3 group cursor-pointer">

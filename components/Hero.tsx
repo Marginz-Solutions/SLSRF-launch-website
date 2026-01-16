@@ -1,19 +1,43 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
 const Hero: React.FC = () => {
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleSound = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden pt-20">
-      {/* High-end Conclave Background with specific overlay */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
+      {/* Video Background - extends to navbar area */}
+      <div className="absolute z-0 overflow-hidden" style={{ top: '-80px', left: 0, right: 0, height: 'calc(100vh + 80px)', width: '100%' }}>
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted={isMuted}
+          playsInline
+          className="w-full h-full object-cover"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            transform: 'scale(1.25)',
+            transformOrigin: 'center center'
+          }}
+        >
+          <source src="/QDotz.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/95 z-10"></div>
-        <img 
-          src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop" 
-          alt="Life Science Research Foundation Launch Event" 
-          className="w-full h-full object-cover opacity-50 animate-kenburns"
-        />
       </div>
 
-      <div className="relative z-20 w-full max-w-[1400px] px-10">
+      <div className="relative z-20 w-full max-w-[1400px] px-10 pt-24 md:pt-32">
         <div className="flex flex-col items-center justify-center text-center">
           
           {/* Main Headline - Matching "The NEXT Frontier" Layout */}
@@ -54,6 +78,19 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Sound Control Button - Bottom Left Corner */}
+      <button
+        onClick={toggleSound}
+        className="fixed bottom-6 left-6 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 hover:border-[#f2921d] flex items-center justify-center transition-all duration-300 hover:bg-black/70 group"
+        aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+      >
+        {isMuted ? (
+          <i className="fas fa-volume-mute text-white group-hover:text-[#f2921d] transition-colors text-lg md:text-xl"></i>
+        ) : (
+          <i className="fas fa-volume-up text-white group-hover:text-[#f2921d] transition-colors text-lg md:text-xl"></i>
+        )}
+      </button>
     </section>
   );
 };
