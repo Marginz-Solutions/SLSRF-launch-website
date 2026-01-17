@@ -2,31 +2,29 @@
 import React from 'react';
 
 const About: React.FC = () => {
+  const scrollToLocation = () => {
+    const locationSection = document.getElementById('location');
+    if (locationSection) {
+      locationSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="about" className="bg-black">
       {/* Orange & Partner Banner Row */}
       <div className="grid grid-cols-1 lg:grid-cols-4">
         <div className="lg:col-span-3 bg-[#f2921d] about-orange-section flex flex-col justify-center reveal-left">
-          <h2 className="text-white about-orange-title font-black uppercase leading-[0.9] tracking-tighter mb-4 sm:mb-6 title-underline">
+          <h2 className="text-white about-orange-title font-black uppercase leading-[0.9] tracking-tighter mb-4 sm:mb-6 title-underline" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             #thesemporutkalaivision <br /> A zeal for sustenance
           </h2>
-          <p className="text-white/95 about-orange-text font-medium max-w-3xl leading-relaxed mt-3 sm:mt-4">
-            SLSRF operates at the convergence of science, society, and public policy, ensuring that research translates into actionable knowledge, institutional frameworks, and measurable real-world outcomes.
-          </p>
+          <div className="mt-4 sm:mt-6">
+            <p className="text-white text-xs sm:text-sm font-black uppercase tracking-[0.2em] cursor-pointer hover:text-black transition-colors" onClick={scrollToLocation}>Trident (The Oberoi Group of Hotels) →</p>
+          </div>
         </div>
         <div className="bg-[#050505] about-dark-section flex flex-col justify-center border-l border-white/5 relative overflow-hidden reveal-right">
-          <div className="mb-6 sm:mb-8">
-            <p className="text-[#f2921d] text-xs sm:text-sm font-black uppercase tracking-[0.2em] mb-3 sm:mb-4">#SEMPORUTKALAI2047 →</p>
-            <p className="text-gray-500 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.3em] mb-2">Foundation Vision Address</p>
-            <p className="text-white font-black about-dark-date tracking-widest mb-6 sm:mb-8">25 January 2026</p>
-          </div>
-          <div className="mt-auto pt-6 sm:pt-8 border-t border-white/10">
-            <h3 className="text-white about-dark-title font-black uppercase leading-tight tracking-tight mb-2">
-              Presenting
-            </h3>
-            <p className="text-white about-dark-subtitle font-bold leading-tight">
-              #thesemporutkalaivision<br />A zeal for sustenance
-            </p>
+          <div className="flex flex-col justify-center h-full text-center">
+            <p className="text-[#f2921d] text-xs sm:text-sm font-black uppercase tracking-[0.2em] mb-2">Foundation Vision Address</p>
+            <p className="text-white font-black about-dark-date tracking-widest text-2xl sm:text-3xl md:text-4xl">25 January 2026</p>
           </div>
         </div>
       </div>
@@ -44,7 +42,7 @@ const About: React.FC = () => {
              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black uppercase tracking-tighter mb-3 sm:mb-4 md:mb-6">Visionary Exchange</h3>
              <div className="space-y-1 sm:space-y-2">
                 <p className="text-[#f2921d] font-bold uppercase tracking-widest text-[10px] sm:text-xs md:text-sm">Topic:</p>
-                <p className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl uppercase tracking-tighter leading-tight">Breaking Boundaries Building a Brand with Indian Roots</p>
+                <p className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl uppercase tracking-tighter leading-tight">Building a Legacy with Indian Roots</p>
              </div>
           </div>
         </div>

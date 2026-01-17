@@ -6,15 +6,15 @@ const WhatSetsApart: React.FC = () => {
 
   const cards = [
     {
-      title: 'PURPOSE-DRIVEN COLLABORATION',
+      title: 'DRIVING SOCIAL IMPACT',
       desc: 'Engage in meaningful collaborations with research institutions, policymakers, industry leaders, academicians, and grassroots stakeholders, fostering partnerships that translate knowledge into scalable social and environmental impact.'
     },
     {
-      title: 'NATIONAL KNOWLEDGE ANCHORING',
+      title: 'ACCELERATION ENVIRONMENT INNOVATION',
       desc: 'Anchoring the Digital Knowledge Bank on Indian Medicinal Flora and Aromatic Plants, SLSRF establishes a structured, living repository that safeguards India’s biodiversity intelligence for research, education, and policy-making.'
     },
     {
-      title: 'TRADITION MEETS TECHNOLOGY',
+      title: 'SUSTENANCE',
       desc: 'By integrating traditional wisdom, life sciences, AI, and digital platforms, SLSRF creates future-ready frameworks that respect heritage while advancing scientific innovation.'
     },
     {

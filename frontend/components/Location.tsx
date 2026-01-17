@@ -25,10 +25,10 @@ const Location: React.FC = () => {
               {/* Venue Name */}
               <div>
                 <h3 className="text-[#f2921d] text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight mb-4">
-                  Trident Chennai
+                  Trident (The Oberoi Group of Hotels)
                 </h3>
                 <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-                  A premium venue perfectly positioned for our transformative launch event, offering world-class facilities and accessibility.
+                  A venue perfectly positioned for our transformative launch event, offering world-class facilities and accessibility.
                 </p>
               </div>
 
@@ -57,19 +57,6 @@ const Location: React.FC = () => {
                     </p>
                     <p className="text-gray-400 text-sm font-medium">
                       The Divine Launch
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 sm:gap-6 group">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex items-center justify-center text-[#f2921d] group-hover:bg-[#f2921d] group-hover:text-black transition-all shrink-0">
-                    <i className="fas fa-plane text-lg sm:text-xl"></i>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-white text-xs font-bold uppercase tracking-widest opacity-60 mb-2">Accessibility</span>
-                    <p className="text-gray-300 font-medium text-base sm:text-lg">
-                      Close to Chennai International Airport<br />
-                      Easy metro and road connectivity
                     </p>
                   </div>
                 </div>

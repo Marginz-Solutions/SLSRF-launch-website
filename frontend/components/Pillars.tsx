@@ -1,7 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const Pillars: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+  const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
 
   const pillars = [
     {
@@ -26,13 +31,108 @@ const Pillars: React.FC = () => {
     }
   ];
 
-  const scroll = (direction: 'left' | 'right') => {
+  const updateScrollButtons = () => {
     if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+      
+      // Update current index based on scroll position
       const cardWidth = clientWidth / (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1);
-      const scrollTo = direction === 'left' ? scrollLeft - cardWidth : scrollLeft + cardWidth;
+      const newIndex = Math.round(scrollLeft / (cardWidth + 24));
+      setCurrentIndex(newIndex);
+    }
+  };
+
+  const scrollToIndex = (index: number) => {
+    if (scrollRef.current) {
+      const { clientWidth } = scrollRef.current;
+      const cardWidth = clientWidth / (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1);
+      const scrollAmount = (cardWidth + 24) * index;
+      scrollRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const autoScroll = () => {
+    if (!isAutoScrolling) return;
+    
+    const maxIndex = pillars.length - (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1);
+    let nextIndex = currentIndex + 1;
+    
+    // Reset to beginning when reaching the end
+    if (nextIndex > maxIndex) {
+      nextIndex = 0;
+    }
+    
+    scrollToIndex(nextIndex);
+  };
+
+  const startAutoScroll = () => {
+    if (autoScrollInterval.current) {
+      clearInterval(autoScrollInterval.current);
+    }
+    autoScrollInterval.current = setInterval(autoScroll, 4000); // Auto-scroll every 4 seconds
+  };
+
+  const stopAutoScroll = () => {
+    if (autoScrollInterval.current) {
+      clearInterval(autoScrollInterval.current);
+      autoScrollInterval.current = null;
+    }
+  };
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', updateScrollButtons);
+      updateScrollButtons(); // Initial check
+      
+      // Handle window resize
+      const handleResize = () => updateScrollButtons();
+      window.addEventListener('resize', handleResize);
+      
+      // Start auto-scroll
+      if (isAutoScrolling) {
+        startAutoScroll();
+      }
+      
+      return () => {
+        scrollContainer.removeEventListener('scroll', updateScrollButtons);
+        window.removeEventListener('resize', handleResize);
+        stopAutoScroll();
+      };
+    }
+  }, [currentIndex, isAutoScrolling]);
+
+  const scroll = (direction: 'left' | 'right') => {
+    // Stop auto-scroll when user manually navigates
+    setIsAutoScrolling(false);
+    stopAutoScroll();
+    
+    if (scrollRef.current) {
+      const { clientWidth } = scrollRef.current;
+      const cardWidth = clientWidth / (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1);
+      const scrollAmount = cardWidth + 24; // Include gap
+      const scrollTo = direction === 'left' 
+        ? scrollRef.current.scrollLeft - scrollAmount 
+        : scrollRef.current.scrollLeft + scrollAmount;
+      
       scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
     }
+    
+    // Resume auto-scroll after 10 seconds of inactivity
+    setTimeout(() => {
+      setIsAutoScrolling(true);
+    }, 10000);
+  };
+
+  const handleMouseEnter = () => {
+    setIsAutoScrolling(false);
+    stopAutoScroll();
+  };
+
+  const handleMouseLeave = () => {
+    setIsAutoScrolling(true);
   };
 
   return (
@@ -48,22 +148,57 @@ const Pillars: React.FC = () => {
           </h2>
         </div>
 
-        {/* Sliding Carousel Container */}
-        <div className="relative group">
+        {/* Enhanced Sliding Carousel Container */}
+        <div className="relative group" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          {/* Carousel Container with improved scrolling */}
           <div 
             ref={scrollRef} 
-            className="carousel-container flex gap-6 pb-12 cursor-grab active:cursor-grabbing overflow-x-auto"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="carousel-container flex gap-6 pb-12 cursor-grab active:cursor-grabbing overflow-x-auto scroll-smooth"
+            style={{ 
+              scrollbarWidth: 'none', 
+              msOverflowStyle: 'none',
+              scrollSnapType: 'x mandatory'
+            }}
+            onMouseDown={(e) => {
+              // Stop auto-scroll when user interacts
+              setIsAutoScrolling(false);
+              stopAutoScroll();
+              
+              const startX = e.pageX - (scrollRef.current?.offsetLeft || 0);
+              const scrollLeft = scrollRef.current?.scrollLeft || 0;
+              
+              const handleMouseMove = (e: MouseEvent) => {
+                if (scrollRef.current) {
+                  const x = e.pageX - (scrollRef.current.offsetLeft || 0);
+                  const walk = (x - startX) * 2;
+                  scrollRef.current.scrollLeft = scrollLeft - walk;
+                }
+              };
+              
+              const handleMouseUp = () => {
+                document.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseup', handleMouseUp);
+                
+                // Resume auto-scroll after 10 seconds
+                setTimeout(() => {
+                  setIsAutoScrolling(true);
+                }, 10000);
+              };
+              
+              document.addEventListener('mousemove', handleMouseMove);
+              document.addEventListener('mouseup', handleMouseUp);
+            }}
           >
             {pillars.map((pillar, index) => (
               <div 
                 key={index} 
                 className="carousel-item w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.33%-1rem)] shrink-0 h-full"
+                style={{ scrollSnapAlign: 'start' }}
               >
                 <div className="h-[450px] sm:h-[480px] md:h-[500px] bg-[#0c0c0c] border border-white/5 p-6 sm:p-8 md:p-10 lg:p-14 flex flex-col justify-between hover:border-[#f2921d]/30 transition-all duration-500 relative overflow-hidden group/card">
                   
-                  {/* Large background number - Faded like original */}
-                  <div className="absolute top-2 sm:top-4 right-2 sm:right-4 text-[8rem] sm:text-[9rem] md:text-[10rem] font-black text-white/[0.03] leading-none select-none group-hover/card:text-[#f2921d]/[0.05] transition-colors duration-700 pointer-events-none">
+                  {/* Large background number - More visible */}
+                  <div className="absolute top-2 sm:top-4 right-2 sm:right-4 text-[8rem] sm:text-[9rem] md:text-[10rem] font-black text-white/[0.08] leading-none select-none group-hover/card:text-[#f2921d]/[0.12] transition-colors duration-700 pointer-events-none">
                     {index + 1}
                   </div>
 
@@ -92,22 +227,68 @@ const Pillars: React.FC = () => {
             ))}
           </div>
 
-          {/* Slider Navigation Controls */}
+          {/* Enhanced Slider Navigation Controls */}
           <div className="flex justify-center md:justify-end gap-3 sm:gap-4 mt-6 sm:mt-8">
             <button 
               onClick={() => scroll('left')}
-              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 text-white flex items-center justify-center hover:bg-[#f2921d] hover:text-black hover:border-[#f2921d] transition-all"
+              disabled={!canScrollLeft}
+              className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full border flex items-center justify-center transition-all ${
+                canScrollLeft 
+                  ? 'border-white/10 text-white hover:bg-[#f2921d] hover:text-black hover:border-[#f2921d]' 
+                  : 'border-white/5 text-white/30 cursor-not-allowed'
+              }`}
               aria-label="Previous pillar"
             >
               <i className="fas fa-chevron-left text-xs sm:text-sm"></i>
             </button>
             <button 
               onClick={() => scroll('right')}
-              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 text-white flex items-center justify-center hover:bg-[#f2921d] hover:text-black hover:border-[#f2921d] transition-all"
+              disabled={!canScrollRight}
+              className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full border flex items-center justify-center transition-all ${
+                canScrollRight 
+                  ? 'border-white/10 text-white hover:bg-[#f2921d] hover:text-black hover:border-[#f2921d]' 
+                  : 'border-white/5 text-white/30 cursor-not-allowed'
+              }`}
               aria-label="Next pillar"
             >
               <i className="fas fa-chevron-right text-xs sm:text-sm"></i>
             </button>
+            
+            {/* Auto-scroll toggle button */}
+            <button 
+              onClick={() => {
+                setIsAutoScrolling(!isAutoScrolling);
+                if (!isAutoScrolling) {
+                  startAutoScroll();
+                } else {
+                  stopAutoScroll();
+                }
+              }}
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 text-white flex items-center justify-center hover:bg-[#f2921d] hover:text-black hover:border-[#f2921d] transition-all"
+              aria-label={isAutoScrolling ? "Pause auto-scroll" : "Resume auto-scroll"}
+            >
+              <i className={`fas ${isAutoScrolling ? 'fa-pause' : 'fa-play'} text-xs sm:text-sm`}></i>
+            </button>
+          </div>
+
+          {/* Scroll Progress Indicator */}
+          <div className="flex justify-center mt-4 gap-2">
+            {pillars.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setIsAutoScrolling(false);
+                  stopAutoScroll();
+                  scrollToIndex(index);
+                  setTimeout(() => setIsAutoScrolling(true), 10000);
+                }}
+                className="w-2 h-2 rounded-full transition-all duration-300 hover:scale-125"
+                style={{
+                  backgroundColor: index === currentIndex ? '#f2921d' : 'rgba(255,255,255,0.2)'
+                }}
+                aria-label={`Go to pillar ${index + 1}`}
+              ></button>
+            ))}
           </div>
         </div>
       </div>

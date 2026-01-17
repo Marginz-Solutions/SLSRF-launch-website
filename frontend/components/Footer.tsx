@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
       {/* Massive Contact Heading */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 mb-10 sm:mb-12 md:mb-16 reveal">
         <h2 className="footer-title text-white font-black uppercase tracking-tighter leading-none">
-          GET IN TOUCH.
+          RSVP.
         </h2>
       </div>
 
@@ -65,27 +65,16 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 md:gap-20 lg:gap-24 items-start">
           {/* Office Info */}
           <div className="reveal">
-            <h4 className="footer-section-title text-[#f2921d] font-black uppercase tracking-[0.2em] mb-8 sm:mb-10 md:mb-12 border-l-4 border-[#f2921d] pl-4 sm:pl-6">Our Office</h4>
+            <h4 className="footer-section-title text-[#f2921d] font-black uppercase tracking-[0.2em] mb-8 sm:mb-10 md:mb-12 border-l-4 border-[#f2921d] pl-4 sm:pl-6">Contact Person</h4>
             <div className="space-y-8 sm:space-y-10 md:space-y-12">
-              <div className="flex gap-4 sm:gap-6 group">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center text-[#f2921d] group-hover:bg-[#f2921d] group-hover:text-black transition-all shrink-0">
-                    <i className="fas fa-map-marker-alt text-sm sm:text-base"></i>
-                </div>
-                <div className="flex flex-col">
-                    <span className="text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest opacity-40 mb-2">Address</span>
-                    <p className="footer-text text-gray-300 font-medium leading-snug">
-                    <br />
-                    Chennai
-                    </p>
-                </div>
-              </div>
+              
               <div className="flex gap-4 sm:gap-6 group">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center text-[#f2921d] group-hover:bg-[#f2921d] group-hover:text-black transition-all shrink-0">
                     <i className="fas fa-phone-alt text-sm sm:text-base"></i>
                 </div>
                 <div className="flex flex-col">
-                    <span className="text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest opacity-40 mb-2">Phone</span>
-                    <p className="text-gray-300 font-bold text-xl sm:text-2xl tracking-tight leading-none">+91 91767 60863</p>
+                    <p className="text-gray-300 font-medium text-base sm:text-lg leading-snug">Ms. Radha</p>
+                    <p className="text-gray-300 font-bold text-xl sm:text-2xl tracking-tight leading-none">+91 70930 01790</p>
                 </div>
               </div>
             </div>
@@ -164,9 +153,7 @@ const Footer: React.FC = () => {
         <div className="mt-16 sm:mt-20 md:mt-24 lg:mt-32 pt-10 sm:pt-12 md:pt-16 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-10 opacity-30 hover:opacity-100 transition-opacity">
           <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-center md:text-left">© 2026 SLSRF. All rights reserved.</p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-10 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-center">
-            <a href="#" className="hover:text-[#f2921d]">Privacy Policy</a>
-            <a href="#" className="hover:text-[#f2921d]">Terms of Service</a>
-            <a href="#" className="hover:text-[#f2921d]">Refunds & Cancellations</a>
+            <span className="hover:text-[#f2921d]">Welcome to the Divine Launch of SLSRF (Semporutkalai Life Science Research Foundation)</span>
           </div>
         </div>
       </div>

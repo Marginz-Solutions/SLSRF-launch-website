@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
           <source src="https://res.cloudinary.com/detnivsqb/video/upload/v1768642753/video_for_header_q6bvj8.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        {/* Black overlay coat for better text readability */}
+        {/* Overlay for better text readability - darker and more prominent */}
         <div className="absolute inset-0 bg-black/60 z-10"></div>
       </div>
 
@@ -99,9 +99,6 @@ const Hero: React.FC = () => {
           <div className="max-w-4xl mx-auto border-t border-white/10 pt-8 sm:pt-10 md:pt-12 lg:pt-16 mt-6 md:mt-8 px-4 animate-slide-up delay-500">
             <p className="text-white/90 font-light leading-relaxed tracking-wide italic mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl">
               The Divine Launch of <span className="text-[#f2921d] font-black not-italic px-1 sm:px-2">Semporutkalai Life Science Research Foundation</span>
-            </p>
-            <p className="text-white/70 font-medium leading-relaxed tracking-wide text-base sm:text-lg md:text-xl lg:text-2xl">
-              <span className="text-[#f2921d] font-bold not-italic">From Research to Responsibility:</span> A Sustainable Vision for India
             </p>
           </div>
         </div>

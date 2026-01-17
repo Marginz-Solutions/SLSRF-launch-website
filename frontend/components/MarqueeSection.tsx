@@ -61,21 +61,21 @@ const MarqueeSection: React.FC = () => {
             <div className="flex items-center gap-3">
               <div className="w-8 sm:w-12 h-px bg-[#f2921d]"></div>
               <h3 className="marquee-title text-white font-black uppercase tracking-tight">
-                Conscious Science
+                Driving social impact
               </h3>
             </div>
             
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-white/40 rounded-full hidden sm:block"></div>
               <h3 className="marquee-title text-white font-bold uppercase tracking-tight">
-                National Knowledge
+                Acceleration Environment innovation
               </h3>
             </div>
             
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-white/40 rounded-full hidden sm:block"></div>
               <h3 className="marquee-title text-gray-300 font-bold uppercase tracking-tight">
-                Sustainable Futures
+                Sustenance
               </h3>
               <div className="w-8 sm:w-12 h-px bg-[#f2921d]"></div>
             </div>

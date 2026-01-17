@@ -2,7 +2,7 @@ import React from 'react';
 
 const Highlights: React.FC = () => {
   const highlights = [
-    "Foundation Vision Address - Presenting #thesemporutkalaivision - A zeal for sustenance - #SEMPORUTKALAI2047",
+    "Foundation Vision Address - Presenting #thesemporutkalaivision - A zeal for sustenance",
     "Academic & Institutional Partnership Announcements - Strategic collaborations with leading institutions and organizations",
     "On-boarding the Eminent Advisory Board Members - Welcoming distinguished leaders and visionaries to guide our mission",
     "Stakeholder Interaction Session - Interactive engagement with researchers, policymakers, industry leaders, and community representatives"
