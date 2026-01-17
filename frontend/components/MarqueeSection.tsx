@@ -27,7 +27,6 @@ const MarqueeSection: React.FC = () => {
   useEffect(() => {
     if (scrollRef.current) {
       const scrollWidth = scrollRef.current.scrollWidth;
-      const clientWidth = scrollRef.current.clientWidth;
       const scrollPosition = (scrollWidth / images.length) * currentIndex;
       
       scrollRef.current.scrollTo({
@@ -54,11 +53,39 @@ const MarqueeSection: React.FC = () => {
   };
 
   return (
-    <section id="marquee" className="py-16 sm:py-20 md:py-24 lg:py-32 bg-black overflow-hidden">
+    <section id="marquee" className="responsive-section bg-black overflow-hidden">
       <div className="text-center mb-16 reveal">
-        <p className="text-[#f2921d] text-lg md:text-2xl font-bold uppercase tracking-[0.3em] mt-6">
-          Conscious Science • National Knowledge • Sustainable Futures
-        </p>
+        <div className="responsive-container">
+          {/* Main tagline with enhanced typography */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 md:gap-12">
+            <div className="flex items-center gap-3">
+              <div className="w-8 sm:w-12 h-px bg-[#f2921d]"></div>
+              <h3 className="marquee-title text-white font-black uppercase tracking-tight">
+                Conscious Science
+              </h3>
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-white/40 rounded-full hidden sm:block"></div>
+              <h3 className="marquee-title text-white font-bold uppercase tracking-tight">
+                National Knowledge
+              </h3>
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-white/40 rounded-full hidden sm:block"></div>
+              <h3 className="marquee-title text-gray-300 font-bold uppercase tracking-tight">
+                Sustainable Futures
+              </h3>
+              <div className="w-8 sm:w-12 h-px bg-[#f2921d]"></div>
+            </div>
+          </div>
+          
+          {/* Subtitle */}
+          <p className="text-gray-500 text-xs sm:text-sm font-medium uppercase tracking-[0.3em] mt-6 sm:mt-8">
+            Building India's Legacy Through Innovation
+          </p>
+        </div>
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 group">

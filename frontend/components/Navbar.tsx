@@ -33,18 +33,18 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-[100] transition-all duration-500 ${scrolled ? 'bg-black/90 backdrop-blur-md py-3 sm:py-4 border-b border-white/10 shadow-2xl' : 'bg-transparent py-4 sm:py-6 md:py-8'}`}>
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10 flex items-center justify-between">
+    <nav className={`fixed w-full z-[100] transition-all duration-500 ${scrolled ? 'bg-black/90 backdrop-blur-md navbar-responsive border-b border-white/10 shadow-2xl' : 'bg-transparent navbar-responsive'}`}>
+      <div className="responsive-container flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#top" className="flex items-center gap-2 sm:gap-3 group cursor-pointer">
-          <div className="h-8 sm:h-10 md:h-12 w-auto">
+          <div className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto">
             <img
               src="/SLSRP FINAL LOGO.png"
               alt="SLSRF Launch 2026"
               className="h-full w-auto object-contain"
             />
           </div>
-          <span className="hidden sm:inline-block text-white font-black text-base sm:text-lg tracking-tight leading-none group-hover:text-[#f2921d] transition-colors">
+          <span className="hidden sm:inline-block text-white font-black text-sm sm:text-base md:text-lg tracking-tight leading-none group-hover:text-[#f2921d] transition-colors">
             SLSRF
           </span>
         </a>
@@ -65,9 +65,9 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Menu Icon */}
-        <div className="lg:hidden text-white text-lg sm:text-xl">
-           <i className="fas fa-bars-staggered"></i>
-        </div>
+        <button className="lg:hidden text-white text-lg sm:text-xl hover:text-[#f2921d] transition-colors p-2">
+           <i className="fas fa-bars"></i>
+        </button>
       </div>
     </nav>
   );

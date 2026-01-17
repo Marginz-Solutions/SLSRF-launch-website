@@ -6,25 +6,25 @@ const About: React.FC = () => {
     <section id="about" className="bg-black">
       {/* Orange & Partner Banner Row */}
       <div className="grid grid-cols-1 lg:grid-cols-4">
-        <div className="lg:col-span-3 bg-[#f2921d] p-6 sm:p-10 md:p-16 lg:p-20 flex flex-col justify-center reveal-left">
-          <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-4 sm:mb-6 title-underline">
+        <div className="lg:col-span-3 bg-[#f2921d] about-orange-section flex flex-col justify-center reveal-left">
+          <h2 className="text-white about-orange-title font-black uppercase leading-[0.9] tracking-tighter mb-4 sm:mb-6 title-underline">
             Semporutkalai 2047 <br /> For sustenance
           </h2>
-          <p className="text-white/95 text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-3xl leading-relaxed mt-3 sm:mt-4">
+          <p className="text-white/95 about-orange-text font-medium max-w-3xl leading-relaxed mt-3 sm:mt-4">
             SLSRF 2026 brings together researchers, policymakers, conservationists, and thought leaders to advance conscious science, preserve traditional knowledge, and build sustainable solutions for India's biodiversity and environmental challenges.
           </p>
         </div>
-        <div className="bg-[#050505] p-6 sm:p-10 md:p-12 lg:p-16 flex flex-col justify-center border-l border-white/5 relative overflow-hidden reveal-right">
+        <div className="bg-[#050505] about-dark-section flex flex-col justify-center border-l border-white/5 relative overflow-hidden reveal-right">
           <div className="mb-6 sm:mb-8">
             <p className="text-[#f2921d] text-xs sm:text-sm font-black uppercase tracking-[0.2em] mb-3 sm:mb-4">ANCHOR INITIATIVE →</p>
             <p className="text-gray-500 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.3em] mb-2">National Launch — Chennai</p>
-            <p className="text-white font-black text-2xl sm:text-3xl tracking-widest mb-6 sm:mb-8">25 January 2026</p>
+            <p className="text-white font-black about-dark-date tracking-widest mb-6 sm:mb-8">25 January 2026</p>
           </div>
           <div className="mt-auto pt-6 sm:pt-8 border-t border-white/10">
-            <h3 className="text-white text-xl sm:text-2xl md:text-3xl font-black uppercase leading-tight tracking-tight mb-2">
+            <h3 className="text-white about-dark-title font-black uppercase leading-tight tracking-tight mb-2">
               Digital Knowledge Bank on
             </h3>
-            <p className="text-white text-lg sm:text-xl md:text-2xl font-bold leading-tight">
+            <p className="text-white about-dark-subtitle font-bold leading-tight">
               Indian Medicinal Flora<br />& Aromatic Plants
             </p>
           </div>

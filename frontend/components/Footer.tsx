@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
     <footer id="contact" className="bg-black pt-16 sm:pt-20 md:pt-24 lg:pt-32 overflow-hidden">
       {/* Massive Contact Heading */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 mb-10 sm:mb-12 md:mb-16 reveal">
-        <h2 className="text-white text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[9rem] font-black uppercase tracking-tighter leading-none">
+        <h2 className="footer-title text-white font-black uppercase tracking-tighter leading-none">
           GET IN TOUCH.
         </h2>
       </div>
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 md:gap-20 lg:gap-24 items-start">
           {/* Office Info */}
           <div className="reveal">
-            <h4 className="text-[#f2921d] text-lg sm:text-xl md:text-2xl font-black uppercase tracking-[0.2em] mb-8 sm:mb-10 md:mb-12 border-l-4 border-[#f2921d] pl-4 sm:pl-6">Our Office</h4>
+            <h4 className="footer-section-title text-[#f2921d] font-black uppercase tracking-[0.2em] mb-8 sm:mb-10 md:mb-12 border-l-4 border-[#f2921d] pl-4 sm:pl-6">Our Office</h4>
             <div className="space-y-8 sm:space-y-10 md:space-y-12">
               <div className="flex gap-4 sm:gap-6 group">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center text-[#f2921d] group-hover:bg-[#f2921d] group-hover:text-black transition-all shrink-0">
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="flex flex-col">
                     <span className="text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest opacity-40 mb-2">Address</span>
-                    <p className="text-gray-300 font-medium text-base sm:text-lg leading-snug">
+                    <p className="footer-text text-gray-300 font-medium leading-snug">
                     <br />
                     Chennai
                     </p>
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
           
           {/* Contact Form */}
           <div className="reveal">
-            <h4 className="text-[#f2921d] text-lg sm:text-xl md:text-2xl font-black uppercase tracking-[0.2em] mb-8 sm:mb-10 md:mb-12">Send us a message</h4>
+            <h4 className="footer-section-title text-[#f2921d] font-black uppercase tracking-[0.2em] mb-8 sm:mb-10 md:mb-12">Send us a message</h4>
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               <div className="flex flex-col gap-2 sm:gap-3">
                 <label className="text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-widest opacity-60">Full Name *</label>

@@ -10,35 +10,35 @@ const Partners: React.FC = () => {
   ];
 
   return (
-    <section id="partners" className="py-16 sm:py-20 md:py-24 lg:py-32 bg-black border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="partners" className="responsive-section bg-black border-t border-white/5">
+      <div className="responsive-container">
         <div className="text-center mb-16 sm:mb-20 md:mb-24 reveal-zoom">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-3 sm:mb-4">
+            <h2 className="partners-title font-black text-white uppercase tracking-tighter leading-none mb-3 sm:mb-4">
                 PART<span className="text-[#f2921d]">NERS</span>
             </h2>
-            <p className="text-gray-500 uppercase tracking-[0.3em] sm:tracking-[0.5em] font-bold text-[10px] sm:text-xs">Collaborating for a sustainable future</p>
+            <p className="text-gray-500 uppercase tracking-[0.3em] sm:tracking-[0.5em] font-bold text-xs">Collaborating for a sustainable future</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+        <div className="partners-grid responsive-grid-4 max-w-4xl mx-auto">
           {mainPartners.map((partner, index) => (
             <div 
               key={index} 
-              className="bg-white aspect-square p-6 sm:p-7 md:p-8 flex flex-col items-center justify-center hover:shadow-2xl hover:scale-[1.05] transition-all group rounded-sm reveal-zoom"
+              className="partner-card bg-white aspect-square flex flex-col items-center justify-center hover:shadow-2xl hover:scale-[1.05] transition-all group rounded-sm reveal-zoom"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-                <div className={`w-full flex items-center justify-center mb-5 grayscale group-hover:grayscale-0 transition-all duration-700 ${partner.name === 'SNA' ? 'h-20' : 'h-16'}`}>
+                <div className={`w-full flex items-center justify-center mb-2 sm:mb-3 grayscale group-hover:grayscale-0 transition-all duration-700 ${partner.name === 'SNA' ? 'partner-logo-height' : 'h-8 sm:h-10'}`}>
                     {partner.hasLogo ? (
                       <img 
                         src={partner.logo!} 
                         alt={partner.name} 
-                        className={`max-w-full object-contain ${partner.name === 'SNA' ? 'max-h-20' : 'max-h-full'}`}
+                        className={`max-w-full object-contain ${partner.name === 'SNA' ? 'max-h-10 sm:max-h-12' : 'max-h-full'}`}
                       />
                     ) : (
-                      <span className="text-black font-black text-xl md:text-2xl tracking-tighter uppercase text-center leading-none">{partner.name}</span>
+                      <span className="text-black font-black text-sm sm:text-base md:text-lg tracking-tighter uppercase text-center leading-none">{partner.name}</span>
                     )}
                 </div>
-                <div className="w-full h-px bg-gray-100 mb-4"></div>
-                <p className="text-gray-400 text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-center">{partner.type}</p>
+                <div className="w-full h-px bg-gray-100 mb-2"></div>
+                <p className="partner-type text-gray-400 uppercase font-bold tracking-widest text-center">{partner.type}</p>
             </div>
           ))}
         </div>

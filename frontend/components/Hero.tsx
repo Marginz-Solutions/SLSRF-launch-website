@@ -30,47 +30,74 @@ const Hero: React.FC = () => {
             filter: 'blur(3px) brightness(0.7)'
           }}
         >
-          <source src="/shorter video.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/detnivsqb/video/upload/v1768571972/shorter_video_yaznah.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         {/* Overlay for better text readability - darker and more prominent */}
         <div className="absolute inset-0 bg-black/60 z-10"></div>
       </div>
 
-      <div className="relative z-20 w-full max-w-[1400px] px-4 sm:px-6 md:px-10 pt-20 md:pt-24 lg:pt-32">
+      <div className="relative z-20 hero-container">
         <div className="flex flex-col items-center justify-center text-center">
           
-          {/* Main Headline - Matching "The NEXT Frontier" Layout */}
-          <div className="relative flex flex-wrap items-start justify-center gap-2 sm:gap-3 md:gap-4 mb-6 md:mb-8">
+          {/* Main Headline - Mobile-first responsive layout */}
+          <div className="relative w-full mb-6 md:mb-8">
             
-            {/* "The" with Date/Location */}
-            <div className="relative flex flex-col items-start">
-              <h1 className="hero-the text-white text-[11vw] sm:text-[9vw] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-bold leading-none tracking-tight animate-tracking-in" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                The
-              </h1>
-              {/* Date and Location positioned below "The" - aligned to start */}
-              <div className="mt-1 sm:mt-2 md:mt-3 text-left w-full pl-2 sm:pl-4 md:pl-6 lg:pl-8">
-                <p className="hero-date text-[#f2921d] text-[10px] sm:text-xs md:text-sm font-bold tracking-wide animate-slide-up delay-300" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>25.01.2026</p>
-                <p className="hero-location text-white text-[9px] sm:text-[10px] md:text-xs font-medium tracking-wide animate-slide-up delay-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Trident, Chennai</p>
+            {/* Mobile Layout (< 768px) - Stack everything vertically */}
+            <div className="block md:hidden">
+              {/* Date and Location - Top */}
+              <div className="mb-4 text-center">
+                <p className="hero-date text-[#f2921d] font-bold tracking-wide animate-slide-up delay-300" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>25.01.2026</p>
+                <p className="hero-location text-white font-medium tracking-wide animate-slide-up delay-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Trident, Chennai</p>
+              </div>
+              
+              {/* Main Title - Center */}
+              <div className="text-center mb-4">
+                <h1 className="text-white text-4xl sm:text-5xl font-bold leading-none tracking-tight animate-tracking-in mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  The
+                </h1>
+                <h1 className="text-[#f2921d] text-6xl sm:text-7xl font-black leading-none tracking-tighter animate-tracking-in delay-200" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  DIVINE
+                </h1>
+                <h2 className="text-white text-4xl sm:text-5xl font-bold leading-none tracking-tight animate-slide-up delay-700" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  Launch
+                </h2>
               </div>
             </div>
 
-            {/* "DIVINE" with "Launch" below - Large Orange Text */}
-            <div className="relative flex flex-col items-end">
-              <h1 className="hero-divine text-[#f2921d] text-[17vw] sm:text-[15vw] md:text-[9rem] lg:text-[11rem] xl:text-[13rem] font-black leading-none tracking-tighter animate-tracking-in delay-200" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                DIVINE
-              </h1>
-              {/* "Launch" positioned below "DIVINE" and right-aligned */}
-              <h2 className="hero-launch text-white text-[11vw] sm:text-[9vw] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] font-bold leading-none tracking-tight mt-[-0.3rem] sm:mt-[-0.4rem] md:mt-[-0.5rem] animate-slide-up delay-700" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                Launch
-              </h2>
+            {/* Desktop Layout (768px+) - Original side-by-side layout */}
+            <div className="hidden md:flex flex-wrap items-start justify-center gap-2 sm:gap-3 md:gap-4">
+              
+              {/* "The" with Date/Location */}
+              <div className="relative flex flex-col items-start">
+                <h1 className="hero-the text-white font-bold leading-none tracking-tight animate-tracking-in" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  The
+                </h1>
+                {/* Date and Location positioned below "The" - aligned to start */}
+                <div className="mt-1 sm:mt-2 md:mt-3 text-left w-full pl-2 sm:pl-4 md:pl-6 lg:pl-8">
+                  <p className="hero-date text-[#f2921d] font-bold tracking-wide animate-slide-up delay-300" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>25.01.2026</p>
+                  <p className="hero-location text-white font-medium tracking-wide animate-slide-up delay-500" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Trident, Chennai</p>
+                </div>
+              </div>
+
+              {/* "DIVINE" with "Launch" below - Large Orange Text */}
+              <div className="relative flex flex-col items-end">
+                <h1 className="hero-divine text-[#f2921d] font-black leading-none tracking-tighter animate-tracking-in delay-200" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  DIVINE
+                </h1>
+                {/* "Launch" positioned below "DIVINE" and right-aligned */}
+                <h2 className="hero-launch text-white font-bold leading-none tracking-tight mt-[-0.3rem] sm:mt-[-0.4rem] md:mt-[-0.5rem] animate-slide-up delay-700" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                  Launch
+                </h2>
+              </div>
+
             </div>
 
           </div>
 
           {/* Tagline / Description */}
           <div className="max-w-4xl mx-auto border-t border-white/10 pt-8 sm:pt-10 md:pt-12 lg:pt-16 mt-6 md:mt-8 px-4 animate-slide-up delay-500">
-            <p className="hero-tagline text-white/80 text-xs sm:text-sm md:text-base lg:text-xl xl:text-2xl 2xl:text-3xl font-light leading-relaxed tracking-wide italic">
+            <p className="hero-tagline text-white/80 font-light leading-relaxed tracking-wide italic">
               Semporutkalai Life Science Research Foundation presents a <span className="text-[#f2921d] font-black not-italic px-1 sm:px-2">transformative initiative</span> <br className="hidden md:block" />
               for knowledge preservation, human empowerment, and environmental stewardship.
             </p>
