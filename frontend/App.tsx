@@ -11,6 +11,7 @@ import MarqueeSection from './components/MarqueeSection';
 // import Transforms from './components/Transforms';
 // import WhatSetsApart from './components/WhatSetsApart';
 import Speakers from './components/Speakers';
+import RollOfHonour from './components/RollOfHonour';
 import Partners from './components/Partners';
 import Location from './components/Location';
 import Footer from './components/Footer';
@@ -63,6 +64,7 @@ const App: React.FC = () => {
         {/* <Transforms /> */}
         {/* <WhatSetsApart /> */}
         <Speakers />
+        <RollOfHonour />
         <Partners />
         <Location />
       </main>

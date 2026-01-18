@@ -22,13 +22,13 @@ const Highlights: React.FC = () => {
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-16 lg:gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-16 lg:gap-24 items-stretch">
           
           {/* Left: Event Image Section */}
           <div className="relative reveal-left">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-sm group shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+            <div className="relative h-full min-h-[400px] overflow-hidden rounded-sm group shadow-[0_0_50px_rgba(0,0,0,0.5)]">
               <img 
-                src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2070&auto=format&fit=crop" 
+                src="/IMG_9014.JPG" 
                 alt="Foundation Launch Event - Vision Presentation and Stakeholder Collaboration" 
                 className="w-full h-full object-cover grayscale brightness-50 contrast-125 transition-transform duration-1000 group-hover:scale-105"
               />

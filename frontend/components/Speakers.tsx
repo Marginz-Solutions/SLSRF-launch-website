@@ -11,76 +11,76 @@ const Speakers: React.FC = () => {
       img: '/jc.png'
     },
     {
-      name: 'Prof Kamlesh Joshipura',
+      name: 'Prof. Kamlesh Joshipura',
       role: '',
       company: 'Vice-Chancellor of Saurashtra University, Rajkot',
       speechTitle: 'To be decided',
-      img: '/Kamlesh_Joshipura.jpg'
+      img: '/Prof. Kamlesh Joshipura.jpeg'
     },
     {
       name: 'Mr Kishore Kumar KRM IPS',
       role: '',
       company: 'Director, Ayush Hospitals',
       speechTitle: 'To be decided',
-      img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2070&auto=format&fit=crop'
+      img: '/Mr. K R M Kishore Kumar.png'
     },
     {
-      name: 'Thiru R. Srinivasan',
+      name: 'Thiru. R Srinivasan',
       role: '',
       company: 'Chairman, KSR Educational Institutions',
       speechTitle: 'Academia as a Pillar in Nation-Building for Sustenance',
-      img: '/Srinivasan_R.jpg'
+      img: '/Thiru. R Srinivasan.jpeg'
     },
     {
-      name: 'Shriraam Shekher S R',
+      name: 'Dr. Shriraam Shekher S.R',
       role: '',
       company: 'President, International Media Organisation',
       speechTitle: 'To be decided',
-      img: '/Dr_Shriraam_Sekher.jpg'
+      img: '/Dr. Shriraam Shekher S.R.jpeg'
     },
     {
       name: 'Dr. Yogita Shukla',
       role: '',
       company: 'CEO, AddGEO Foundation',
       speechTitle: 'To be decided',
-      img: '/Dr. Yogita Shukla.jpg'
+      img: '/Dr. Yogita Shukla.jpeg'
     },
     {
       name: 'Dr. Murugeswaran R',
       role: '',
       company: 'Dept Advisor, NMPB',
       speechTitle: 'To be decided',
-      img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop'
+      img: '/Dr. Murugeswaran R.jpeg'
     },
     {
       name: 'Dr. Vincent S',
       role: '',
       company: 'Panel Expert',
       speechTitle: 'To be decided',
-      img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop'
+      img: '/Dr. Vincent S.jpeg'
     },
     {
-      name: 'Dr Kotur PB',
+      name: 'Dr. Kotur P B',
       role: '',
       company: 'Global Goodwill Ambassador',
       speechTitle: 'Human Capital Doctrine',
-      img: '/Dr Kotur PB.jpg'
+      img: '/Dr. Kotur P B.jpeg'
     },
     {
       name: 'Dr. Venkateshwaran',
       role: '',
       company: 'CEO, proofile.in',
       speechTitle: 'To be decided',
-      img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop'
+      img: ''
     }
   ];
 
   const panelSpeakers = [
-    { name: 'Dr. W. Selvamurthy S.P', role: 'President, ASTIF', img: '/Dr_W_Selvamurthy.jpg' },
-    { name: 'Dr. Shankar GV', role: 'President & CEO, Global Connect Inc', img: '/Shankar_GV.jpg' },
-    { name: 'Dr. Sadamate V V', role: 'Former Adviser Agriculture, Planning Commission', img: '/VV_Sadamate.jpg' },
-    { name: 'Dr. Thyagarajan S P', role: 'Former Vice Chancellor, Madras University', img: '/Dr Thyagaraja SP.jpg' },
-    { name: 'Dr. Sudarshan Suryawanshi', role: 'COO – Axiom India', img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop' }
+    { name: 'Dr. Selvamurthy W', role: 'President, ASTIF', img: '/Dr. Selvamurthy W.jpeg' },
+    { name: 'Dr. Shankar G V', role: 'President & CEO, Global Connect Inc', img: '/Dr. Shankar G V.jpeg' },
+    { name: 'Dr. Sadamate V V', role: 'Former Adviser Agriculture, Planning Commission', img: '/Dr. Sadamate V V.jpeg' },
+    { name: 'Dr. Thyagarajan S P', role: 'Former Vice Chancellor, Madras University', img: '/Dr. Thyagarajan S P.jpeg' },
+    { name: 'Dr. Sudharsan Suryawanshi', role: 'COO – Axiom India', img: '/Dr. Sudharsan Suryawanshi.jpeg' }
   ];
 
   return (
@@ -105,11 +105,21 @@ const Speakers: React.FC = () => {
               >
                 {/* Speaker Image */}
                 <div className="aspect-square relative overflow-hidden">
-                  <img 
-                    src={speaker.img} 
-                    alt={speaker.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
-                  />
+                  {speaker.img ? (
+                    <img 
+                      src={speaker.img} 
+                      alt={speaker.name} 
+                      className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ${
+                        speaker.name === 'Thiru. Jeyachandran Srinivasan' ? 'grayscale' : ''
+                      }`}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                      <div className="text-gray-600 text-xs font-medium text-center px-2">
+                        Photo Coming Soon
+                      </div>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                 </div>
                 
@@ -156,11 +166,19 @@ const Speakers: React.FC = () => {
               >
                 {/* Speaker Image - Smaller */}
                 <div className="aspect-square relative overflow-hidden">
-                  <img 
-                    src={speaker.img}
-                    alt={speaker.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
-                  />
+                  {speaker.img ? (
+                    <img 
+                      src={speaker.img}
+                      alt={speaker.name} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                      <div className="text-gray-600 text-xs font-medium text-center px-2">
+                        Photo Coming Soon
+                      </div>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                 </div>
                 
