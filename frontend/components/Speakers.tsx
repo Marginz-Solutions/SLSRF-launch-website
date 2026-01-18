@@ -29,7 +29,7 @@ const Speakers: React.FC = () => {
       role: '',
       company: 'Chairman, KSR Educational Institutions',
       speechTitle: 'Academia as a Pillar in Nation-Building for Sustenance',
-      img: '/Thiru. R Srinivasan.jpeg'
+      img: '/Thiru. R Srinivasan.jpeg?v=2'
     },
     {
       name: 'Dr. S R Shriraam Shekher',
