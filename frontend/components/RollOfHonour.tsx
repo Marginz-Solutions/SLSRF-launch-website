@@ -40,7 +40,7 @@ const RollOfHonour: React.FC = () => {
     { name: 'Dr. W. Selvamurthy', role: 'President, ASTIF, Director General, Amity Directorate of Science & Innovation, Chancellor, Amity University Chhattisgarh and Chair Professor for Life Sciences (Former Distinguished Scientist and Chief Controller R&D (LS), DRDO)' },
     { name: 'Dr. Vijendra Tiwari', role: 'Chairman - National Biodiversity Authority' },
     { name: 'Dr. Sudharsan Suryawanshi', role: 'COO – Axiom India' },
-    { name: 'Dr. V.V. SADAMATE', role: 'AGRIL. EXTENSION SPECIALIST & FORMER ADVISER (AGRI.), PLANNING COMMISSION, GOI' },
+    { name: 'Dr. V.V. Sadamate', role: 'Agril. Extension Specialist & Former Adviser (Agri.), Planning Commission, GOI' },
     { name: 'Dr. S.P. Thyagarajan', role: 'Former Vice Chancellor - University of Madras' },
     { name: 'Dr. Yogita Shukla', role: 'CEO, AddGEO Foundation' },
     { name: 'Dr. Murugeswaran R', role: 'Deputy Advisor - National Medicinal Plants Board' },
@@ -53,7 +53,7 @@ const RollOfHonour: React.FC = () => {
 
   const advisoryBoard = [
     { name: 'Dr. S R Shriraam Shekher', role: 'President, International Mediation Organisation' },
-    { name: 'Dr. R. SRIDHARAN, B.Sc., M.D (Siddha)', role: 'Senior Chief Medical Officer Former Director (Ayush) cum CEO (SMPB) GOVT. OF PUDUCHERRY' },
+    { name: 'Dr. R. Sridharan, B.Sc., M.D (Siddha)', role: 'Senior Chief Medical Officer Former Director (Ayush) cum CEO (SMPB) Govt. of Puducherry' },
     { name: 'Dr. M Kolappa Pillai', role: 'Founder Trustee World Siddha Trust' },
     { name: 'Dr. D Narasimhan', role: 'Senior Ethnobotanist' },
     { name: 'Shri. KU Srinivasan', role: 'Managing Partner M/s Connecting DOTS' },

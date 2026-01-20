@@ -15,7 +15,7 @@ const About: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-4">
         <div className="lg:col-span-3 bg-[#f2921d] about-orange-section flex flex-col justify-center reveal-left">
           <h2 className="text-white about-orange-title font-black uppercase leading-[0.9] tracking-wider mb-4 sm:mb-6 title-underline" style={{ fontFamily: "'Inter', sans-serif" }}>
-            #the semporutkalai vision <br /> A zeal for sustenance
+            #the <span className="text-black">semporutkalai</span> vision <br /> A zeal for <span className="text-black">sustenance</span>
           </h2>
         </div>
         <div className="bg-[#050505] about-dark-section flex flex-col justify-center border-l border-white/5 relative reveal-right">
