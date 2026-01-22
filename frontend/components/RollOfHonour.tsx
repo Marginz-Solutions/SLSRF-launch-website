@@ -23,6 +23,11 @@ const RollOfHonour: React.FC = () => {
       designation: 'Chairman, KS Rangasamy Educational Institutions'
     },
     {
+      name: 'Dr. W Selvamurthy',
+      role: 'Guest of Honour',
+      designation: 'President, ASTIF'
+    },
+    {
       name: 'Dr. Bhavna K. Joshipura',
       role: 'Guest of Honour',
       designation: 'First Lady Major of Rajkot, Sr.Adv - Gujarat High Court'
@@ -37,7 +42,6 @@ const RollOfHonour: React.FC = () => {
 
   const invitees = [
     { name: 'Dr. G.V. Shankar', role: 'IAS (Retd), Industrialist' },
-    { name: 'Dr. W. Selvamurthy', role: 'President, ASTIF, Director General, Amity Directorate of Science & Innovation, Chancellor, Amity University Chhattisgarh and Chair Professor for Life Sciences (Former Distinguished Scientist and Chief Controller R&D (LS), DRDO)' },
     { name: 'Dr. Sudharsan Suryawanshi', role: 'COO – Axiom India' },
     { name: 'Dr. V.V. Sadamate', role: 'Agril. Extension Specialist & Former Adviser (Agri.), Planning Commission, GOI' },
     { name: 'Dr. S.P. Thyagarajan', role: 'Former Vice Chancellor - University of Madras' },
@@ -131,42 +135,88 @@ const RollOfHonour: React.FC = () => {
             </h3>
             <div className="w-16 h-0.5 bg-[#f2921d] mx-auto"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-            {guestsOfHonor.map((guest, index) => (
-              <div 
-                key={index}
-                className="group text-center reveal-zoom"
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <div className="relative bg-gradient-to-br from-[#0a0a0a] to-black border border-[#f2921d]/20 rounded-lg p-8 sm:p-10 hover:border-[#f2921d]/60 transition-all duration-500 hover:shadow-[0_0_30px_rgba(249,146,29,0.2)] h-full flex flex-col">
-                  {/* Decorative corner elements */}
-                  <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 border-[#f2921d]/40"></div>
-                  <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-[#f2921d]/40"></div>
-                  <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-[#f2921d]/40"></div>
-                  <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 border-[#f2921d]/40"></div>
-                  
-                  <div className="flex flex-col flex-1">
-                    <div className="w-12 h-12 mx-auto bg-[#f2921d]/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#f2921d]/20 transition-colors">
-                      <div className="w-6 h-6 bg-[#f2921d] rounded-full"></div>
+          <div className="space-y-8 sm:space-y-12">
+            {/* First row - 3 guests */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+              {guestsOfHonor.slice(0, 3).map((guest, index) => (
+                <div 
+                  key={index}
+                  className="group text-center reveal-zoom"
+                  style={{ transitionDelay: `${index * 200}ms` }}
+                >
+                  <div className="relative bg-gradient-to-br from-[#0a0a0a] to-black border border-[#f2921d]/20 rounded-lg p-8 sm:p-10 hover:border-[#f2921d]/60 transition-all duration-500 hover:shadow-[0_0_30px_rgba(249,146,29,0.2)] h-full flex flex-col">
+                    {/* Decorative corner elements */}
+                    <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 border-[#f2921d]/40"></div>
+                    <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-[#f2921d]/40"></div>
+                    <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-[#f2921d]/40"></div>
+                    <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 border-[#f2921d]/40"></div>
+                    
+                    <div className="flex flex-col flex-1">
+                      <div className="w-12 h-12 mx-auto bg-[#f2921d]/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#f2921d]/20 transition-colors">
+                        <div className="w-6 h-6 bg-[#f2921d] rounded-full"></div>
+                      </div>
+                      <h4 className="text-white text-lg sm:text-xl font-black tracking-tight mb-2 leading-tight flex-shrink-0">
+                        {guest.name}
+                        {guest.title && (
+                          <span className="block text-base sm:text-lg font-semibold text-[#f2921d] mt-1 whitespace-pre-line">
+                            {guest.title}
+                          </span>
+                        )}
+                      </h4>
+                      <p className="text-[#f2921d] text-sm font-bold uppercase tracking-widest mb-3 flex-shrink-0">
+                        {guest.role}
+                      </p>
+                      <p className="text-gray-400 text-xs sm:text-sm font-medium leading-relaxed flex-1">
+                        {guest.designation}
+                      </p>
                     </div>
-                    <h4 className="text-white text-lg sm:text-xl font-black tracking-tight mb-2 leading-tight flex-shrink-0">
-                      {guest.name}
-                      {guest.title && (
-                        <span className="block text-base sm:text-lg font-semibold text-[#f2921d] mt-1 whitespace-pre-line">
-                          {guest.title}
-                        </span>
-                      )}
-                    </h4>
-                    <p className="text-[#f2921d] text-sm font-bold uppercase tracking-widest mb-3 flex-shrink-0">
-                      {guest.role}
-                    </p>
-                    <p className="text-gray-400 text-xs sm:text-sm font-medium leading-relaxed flex-1">
-                      {guest.designation}
-                    </p>
                   </div>
                 </div>
+              ))}
+            </div>
+            
+            {/* Second row - Centered 4th guest (Mr. K R M Kishore Kumar) */}
+            {guestsOfHonor.length > 3 && (
+              <div className="flex justify-center">
+                <div className="w-full max-w-md">
+                  {guestsOfHonor.slice(3).map((guest, index) => (
+                    <div 
+                      key={index + 3}
+                      className="group text-center reveal-zoom"
+                      style={{ transitionDelay: `${(index + 3) * 200}ms` }}
+                    >
+                      <div className="relative bg-gradient-to-br from-[#0a0a0a] to-black border border-[#f2921d]/20 rounded-lg p-8 sm:p-10 hover:border-[#f2921d]/60 transition-all duration-500 hover:shadow-[0_0_30px_rgba(249,146,29,0.2)] h-full flex flex-col">
+                        {/* Decorative corner elements */}
+                        <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 border-[#f2921d]/40"></div>
+                        <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-[#f2921d]/40"></div>
+                        <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-[#f2921d]/40"></div>
+                        <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 border-[#f2921d]/40"></div>
+                        
+                        <div className="flex flex-col flex-1">
+                          <div className="w-12 h-12 mx-auto bg-[#f2921d]/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#f2921d]/20 transition-colors">
+                            <div className="w-6 h-6 bg-[#f2921d] rounded-full"></div>
+                          </div>
+                          <h4 className="text-white text-lg sm:text-xl font-black tracking-tight mb-2 leading-tight flex-shrink-0">
+                            {guest.name}
+                            {guest.title && (
+                              <span className="block text-base sm:text-lg font-semibold text-[#f2921d] mt-1 whitespace-pre-line">
+                                {guest.title}
+                              </span>
+                            )}
+                          </h4>
+                          <p className="text-[#f2921d] text-sm font-bold uppercase tracking-widest mb-3 flex-shrink-0">
+                            {guest.role}
+                          </p>
+                          <p className="text-gray-400 text-xs sm:text-sm font-medium leading-relaxed flex-1">
+                            {guest.designation}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
 
