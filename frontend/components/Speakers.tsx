@@ -52,6 +52,13 @@ const Speakers: React.FC = () => {
       speechTitle: 'Collaborative Intelligence: Industry–Academia Convergence for a Modern Nation',
       img: '/Venkatesh.png'
     },
+    {
+      name: 'Dr. Murugeswaran',
+      role: '',
+      company: 'Deputy Adviser, National Medicinal Plants Board',
+      speechTitle: 'Medicinal Plants in India: Towards a National Strategy for Sustainable Use and Biodiversity Integration',
+      img: '/Murugeswaran.png'
+    },
     // {
     //   name: 'Thiru. R Srinivasan',
     //   role: '',

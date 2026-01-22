@@ -38,15 +38,12 @@ const RollOfHonour: React.FC = () => {
   const invitees = [
     { name: 'Dr. G.V. Shankar', role: 'IAS (Retd), Industrialist' },
     { name: 'Dr. W. Selvamurthy', role: 'President, ASTIF, Director General, Amity Directorate of Science & Innovation, Chancellor, Amity University Chhattisgarh and Chair Professor for Life Sciences (Former Distinguished Scientist and Chief Controller R&D (LS), DRDO)' },
-    { name: 'Dr. Vijendra Tiwari', role: 'Chairman - National Biodiversity Authority' },
     { name: 'Dr. Sudharsan Suryawanshi', role: 'COO – Axiom India' },
     { name: 'Dr. V.V. Sadamate', role: 'Agril. Extension Specialist & Former Adviser (Agri.), Planning Commission, GOI' },
     { name: 'Dr. S.P. Thyagarajan', role: 'Former Vice Chancellor - University of Madras' },
     { name: 'Dr. Yogita Shukla', role: 'CEO, AddGEO Foundation' },
     { name: 'Dr. Murugeswaran R', role: 'Deputy Advisor - National Medicinal Plants Board' },
     { name: 'Dr. Chinnaiyan', role: 'Pro- Vice Chancellor, Lingaya University' },
-    { name: 'Dr. Vincent S', role: 'Secretary - Tamil Nadu Council for Science and Technology' },
-    { name: 'Ms. Shoba Menon', role: 'Founder, Nizhalgal, NGO' },
     { name: 'Mr. Venkatesh S V', role: 'CEO - Proofile.in' },
     { name: 'Dr. Kirthi Kempiah', role: 'Dalhousie University, Nova Scotia, Canada' }
   ];
