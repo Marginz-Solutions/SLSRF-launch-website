@@ -8,7 +8,7 @@ const Speakers: React.FC = () => {
       role: 'Presidential Address',
       company: 'Founder - SLSRF',
       speechTitle: 'SLSRF | Architecting a Scientific and Responsible Civilization',
-      img: '/jc.png'
+      img: '/jc sir.jpeg'
     },
     {
       name: 'Dr. Yogita Shukla',

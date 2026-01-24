@@ -33,7 +33,7 @@ const About: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 mt-2 gap-2">
         <div className="relative aspect-video lg:aspect-auto min-h-[400px] sm:min-h-[500px] md:min-h-[600px] reveal-zoom overflow-hidden group">
           <img 
-            src="/jc sir.jpeg" 
+            src="/WhatsApp Image 2025-12-05 at 16.26.26_02490540.jpg" 
             alt="SLSRF Foundation Launch Event - Vision Presentation and Stakeholder Collaboration" 
             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
           />
